@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style_reserve.css">
+    <title>Reservation</title>
+</head>
+<body>
+    <section id="reservation">
+        <div>
+            <h1>make a reservation</h1>
+            <form>  
+                <label>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
+                <input type="text" name="first name" placeholder="Name" required />
+                <br />
+          
+                <label>Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                <input type="number" name="number" placeholder="Phone Number" required/>
+                <br />
+                
+                <label>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
+                <input type="email" name="mail" placeholder="Email" required/>
+                <br>
+
+                <label>Reservation Date&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                <input type="date" name="reserve date" placeholder="reservation date" />
+                <br />
+                <label for="time">Reservation time&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                <input type="time" id="time" name="time">
+                <br>
+
+                <textarea name="" id="txt" cols="30" rows="10" placeholder="enter your comment"></textarea>
+                <br>
+
+                <input class="send" type="submit" value="Send"/>
+              </form>
+              <!--icons of linkedin youtube facebook-->
+              <div class="icons">
+                    <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
+                    <a href="https://twitter.com/home" target="_blank"><i class='bx bxl-twitter' ></i></a> 
+              </div>
+        </div>
+    </section>
+    <a href="/" class="home">go back to home page</a>
+</body>
+</html>

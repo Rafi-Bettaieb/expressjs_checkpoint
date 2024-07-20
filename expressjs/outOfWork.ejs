@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Open Countdown</title>
+  <style>
+    body{
+      color: white;
+      text-align: center;
+    }
+    .div{
+      margin-top: 300px;
+      margin-right: 200px;
+      font-size: large;
+    }
+    .bg{
+      background-image: url('https://t4.ftcdn.net/jpg/04/49/27/09/240_F_449270967_GF17is5zGXIFD05rP6jBNYyko3NYzoeo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      
+    }
+    .countdown-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .countdown {
+      display: flex;
+      margin-left: 550px;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .time-segment {
+      display: flex;
+      margin-right: 30px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .time-segment p {
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bg">
+    <div class="div">
+        <h1>Sorry, we're currently closed!</h1>
+        <p>The web application is only available during working hours (Monday to Friday,  from 9 to 17).</p>
+        <p>Time until we open again:</p>
+        <div class="countdown">
+          <div class="time-segment">
+            <span id="days">0</span>
+            <p>Days</p>
+          </div>
+          <div class="time-segment">
+            <span id="hours">0</span>
+            <p>Hours</p>
+          </div>
+          <div class="time-segment">
+            <span id="minutes">0</span>
+            <p>Minutes</p>
+          </div>
+          <div class="time-segment">
+            <span id="seconds">0</span>
+            <p>Seconds</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script>
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+
+    const targetDate = new Date(); // Today's date
+
+    // Set target time for Monday 9:00 AM
+    targetDate.setHours(9, 0, 0, 0); // Hours, Minutes, Seconds, Milliseconds
+
+    // Function to calculate time difference considering weekends
+    const getTimeDifference = () => {
+      const today = new Date().getDay();
+      let difference = targetDate.getTime() - new Date().getTime();
+
+      // Adjust for weekends (Friday evening to Monday morning)
+      if (today >= 5) {  // If Friday, Saturday, or Sunday
+        const daysToMonday = (today === 5) ? 2 : (today === 6) ? 1 : 0;
+        difference += daysToMonday * 24 * 60 * 60 * 1000;
+      }
+      return difference;
+    }
+
+    const updateCountdown = () => {
+      const timeDifference = getTimeDifference();
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      daysElement.textContent = days;
+      hoursElement.textContent = hours.toString().padStart(2, '0');
+      minutesElement.textContent = minutes.toString().padStart(2, '0');
+      secondsElement.textContent = seconds.toString().padStart(2, '0');
+
+      if (timeDifference <= 0) {
+        clearInterval(interval);
+      }
+    };
+
+    const interval = setInterval(updateCountdown, 1000);
+
+    updateCountdown();
+
+    </script>
+</body>
+</html>
+
+
+
